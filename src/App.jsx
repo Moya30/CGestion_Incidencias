@@ -11,6 +11,9 @@ import Form from "./pages/Form";
 import RegisterIndex from "./pages/auth/Register";
 import User  from "./pages/User";
 import { DetailsUser } from "./pages/DetailsUser";
+import Incidencias  from "./pages/indicencias/Incidencias";
+import Visualizar from "../src/pages/indicencias/pages/Visualizar"
+import Solucion from "./pages/indicencias/pages/Solucion";
 
 
 function App() {
@@ -19,6 +22,9 @@ function App() {
       <Route path="/" element={<AuthLayout />}>
         <Route path="/" element={<Dashboard />}></Route>
         <Route path="/table" element={<Table />}></Route>
+        <Route path="/incidencias" element={<Incidencias/>}></Route>
+        <Route path="/incidencias/visualizar" element={<Visualizar/>}></Route>
+        <Route path="/incidencias/solucion" element={<Solucion/>}></Route>
         <Route path="/User" element={<User />}></Route>
         <Route path="/DetailsUser" element={<DetailsUser />}></Route>
         <Route path="/404" element={<NotFound />}></Route>

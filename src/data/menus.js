@@ -33,7 +33,7 @@ const initMenu = [
   },
   {
     label: "Incidencias",
-    path: "/form",
+    path: "/incidencias",
     icon: faWindows,
   },
   {

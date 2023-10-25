@@ -53,13 +53,13 @@ function HeaderSort({ tkey, label, field, direction, handleSort }) {
 function Header({ data, handleSort, direction, field } = {}) {
   return (
     <>
-      <thead className="hidden bg-slate-100 md:table-header-group text-gray-600">
+      <thead className="hidden bg-cyan-600 md:table-header-group text-white">
         <tr className="block md:table-row">
           {data.map((row) => (
             <th
               scope="col"
               key={row.key}
-              className={`py-3 px-4 block md:table-cell font-semibold text-xs uppercase  `}
+              className={`py-6 px-4 block md:table-cell font-semibold text-xs uppercase  `}
             >
               {!row.sort ? (
                 <span>{row.label}</span>
