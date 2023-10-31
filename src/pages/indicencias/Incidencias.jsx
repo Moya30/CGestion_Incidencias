@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import UserTableIncidencias from "../indicencias/UserTableIncidencias";
 import Navbar from "../../components/Navbar/Index";
 import Title from "./components/Title";
-import data from "./data/data";
 
 function Incidencias() {
+
   const [sidebarToggle] = useOutletContext();
 
   const [loading] = useState(false);
@@ -50,14 +50,12 @@ function Incidencias() {
         {/* Main Content */}
 
         <div className="mainCard">
-          
-        <Title text={"Incidencia"}></Title>
+          <Title text={"Incidencia"}></Title>
 
           <div className="border w-full border-gray-200 bg-white py-4 px-6 rounded-md">
             <UserTableIncidencias
               loading={loading}
               dataHeader={dataHeader}
-              data={data}
               handleDelete={handleDelete}
             />
           </div>

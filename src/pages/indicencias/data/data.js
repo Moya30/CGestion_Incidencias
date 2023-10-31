@@ -9,14 +9,14 @@ const data = [
     fecha: "12/12/01",
     usuario: "Zidane Ortiz Diaz",
   },
-  {
-    nincidencia: 1020324,
-    area: "PAB-2",
-    salon: "A-101",
-    asunto: "Problemas de seguridad ",
-    fecha: "12/1/2001",
-    usuario: "Andy Fernandez",
-  },
+  // {
+  //   nincidencia: 1020324,
+  //   area: "PAB-2",
+  //   salon: "A-101",
+  //   asunto: "Problemas de seguridad ",
+  //   fecha: "12/1/2001",
+  //   usuario: "Andy Fernandez",
+  // },
   
   
 

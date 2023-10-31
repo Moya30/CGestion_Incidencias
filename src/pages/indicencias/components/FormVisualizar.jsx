@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-
-function FormSolucion({ data }) {
+function FormVisualizar({ data }) {
   const navigate = useNavigate();
   // function saveSolution() {
   //     alert("Agregado");
@@ -15,18 +14,60 @@ function FormSolucion({ data }) {
         <form>
           {data?.map((row, index) => (
             <div key={index}>
-              <div class="grid gap-4 grid-cols-2">
-                {/* incidencia */}
-                <div className="mt-6">
+              <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-8">
+                {/* ------------------- */}
+                <div class="sm:col-span-2 sm:col-start-1">
                   <label htmlFor="largeInput" className="text-lg text-gray-600">
-                    N° Incidencia
+                    Área:
                   </label>
                   <input
                     id="largeInput"
                     type="text"
                     name="largeInput"
                     className="text-xl placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
-                    value={row.nincidencia}
+                    value="PAB-1"  
+                  />
+                </div>
+
+                <div class="sm:col-span-2">
+                  <label htmlFor="largeInput" className="text-lg text-gray-600">
+                    Salón: 
+                  </label>
+                  <input
+                    id="largeInput"
+                    type="text"
+                    name="largeInput"
+                    className="text-xl placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
+                    value="A-303"
+                  />
+                </div>
+
+                <div class="sm:col-span-4">
+                  <label htmlFor="largeInput" className="text-lg text-gray-600">
+                    Tipo de incidencia:
+                  </label>
+                  <input
+                    id="largeInput"
+                    type="text"
+                    name="largeInput"
+                    className="text-xl placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
+                    value="Software"
+                  />
+                </div>
+              </div>
+              {/* ------------------------- */}
+              <div class="grid gap-4 grid-cols-2">
+                {/* incidencia */}
+                <div className="mt-6">
+                  <label htmlFor="largeInput" className="text-lg text-gray-600">
+                    Creación:
+                  </label>
+                  <input
+                    id="largeInput"
+                    type="text"
+                    name="largeInput"
+                    className="text-xl placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
+                    value={row.fecha}
                   />
                 </div>
 
@@ -63,7 +104,7 @@ function FormSolucion({ data }) {
                 {/* Tipo de seguimiento */}
                 <div className="mt-6">
                   <label htmlFor="largeInput" className="text-lg text-gray-600">
-                    Tipo de seguimiento:
+                    N° Incidencia:
                   </label>
                   <input
                     id="largeInput"
@@ -71,7 +112,7 @@ function FormSolucion({ data }) {
                     name="largeInput"
                     // onChange={(e) => setEmail(e.target.value)}
                     className="text-xl placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
-                    value="Proceso de revisión"
+                    value={row.nincidencia}
                   />
                 </div>
               </div>
@@ -90,7 +131,7 @@ function FormSolucion({ data }) {
             </div>
           ))}
 
-          <div className="mt-6 flex flex-row justify-center gap-4 content-center">
+           {/*<div className="mt-6 flex flex-row justify-center gap-4 content-center">
             <button
               className="bg-cyan-900 text-gray-100 px-20 py-2 rounded-full shadow-lg text-lg"
               onClick={() => navigate("/incidencias")}
@@ -102,7 +143,7 @@ function FormSolucion({ data }) {
               Cancelar
             </button>
 
-            {/* <button className="text-emerald-600 border border-gray-100 px-3 py-2 rounded-lg shadow-lg text-sm">
+            <button className="text-emerald-600 border border-gray-100 px-3 py-2 rounded-lg shadow-lg text-sm">
               Secondary Button
             </button>
             <button className="bg-emerald-600 border-emerald-600 text-gray-100 px-3 py-2 rounded-lg shadow-lg text-sm flex gap-2 items-center">
@@ -110,12 +151,12 @@ function FormSolucion({ data }) {
                 <FontAwesomeIcon icon={faFloppyDisk} />
               </div>
               <span>Primary Icon Button</span>
-            </button> */}
-          </div>
+            </button> 
+          </div>*/}
         </form>
       </div>
     </>
   );
 }
 
-export default FormSolucion;
+export default FormVisualizar;
