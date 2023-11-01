@@ -202,43 +202,14 @@ export const DetailsUser = () => {
                   </div>
                 </div>
               </div>
-              {/* Form Large */}
-              {/* <div className="mt-6">
-                <label htmlFor="largeInput" className="text-sm text-gray-600">
-                  Password
-                </label>
-                <input
-                  id="largeInput"
-                  type="text"
-                  name="largeInput"
-                  onChange={(e) => setPassUsua(e.target.value)}
-                  className="text-xl placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
-                  placeholder="Contraseña"
-                />
-              </div> */}
 
               <div className="mt-5 flex flex-row gap-4">
                 <button
-                  className="bg-emerald-600 text-gray-100 px-3 py-2 rounded-lg shadow-lg text-sm"
+                  className="bg-cyan-600 text-gray-100 px-3 py-2 rounded-lg shadow-lg text-sm"
 
                 >
                   Guardar
                 </button>
-
-                {/* <button className="text-emerald-600 border border-gray-100 px-3 py-2 rounded-lg shadow-lg text-sm">
-                  Secondary Button
-                </button>
-
-                <button className="text-emerald-600 border border-emerald-300 px-3 py-2 rounded-lg shadow-lg text-sm">
-                  Outlined Button
-                </button>
-
-                <button className="bg-emerald-600 border-emerald-600 text-gray-100 px-3 py-2 rounded-lg shadow-lg text-sm flex gap-2 items-center">
-                  <div>
-                    <FontAwesomeIcon icon={faFloppyDisk} />
-                  </div>
-                  <span>Primary Icon Button</span>
-                </button> */}
               </div>
             </form>
           </div>

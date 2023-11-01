@@ -12,8 +12,26 @@ import Incidencias  from "./pages/indicencias/Incidencias";
 import Visualizar from "../src/pages/indicencias/pages/Visualizar"
 import Solucion from "./pages/indicencias/pages/Solucion";
 import User from "./pages/Usuario/User";
+import { useState } from "react";
 
 function AppRouter() {
+
+    const [rol, setRol] = useState([])
+
+    const obtenerRol = ()=>{
+        fetch('https://incidencias-fiisi.up.railway.app/api/rol')
+          .then(response => response.json())
+          .then(data => {
+            // Aquí puedes obtener el rol del usuario desde la respuesta de la API.
+            const userRole = data.role;
+            setRol(userRole);
+            // Luego, puedes almacenar el rol en el estado de tu aplicación o en un contexto global.
+          })
+          .catch(error => {
+            // Aquí puedes manejar errores en la solicitud API.
+          });
+    }
+
     return (
         <Routes>
             <Route path="/" element={<Login />}></Route>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 //import StatisticWidget from "../components/Widget/Statistic.jsx";
 //import AchievementWidget from "../components/Widget/Achievment.jsx";
 import DashboardHeader from "../components/Other/DashboardHeader.jsx";
@@ -6,6 +6,9 @@ import ScrolledCard from "../components/Widget/ScrolledCard.jsx";
 import { useOutletContext } from "react-router-dom";
 
 function Dashboard() {
+
+    const [data, setData] = useState([])
+
   const avatar =
     "https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
 
@@ -60,7 +63,25 @@ function Dashboard() {
     },
   ];
 
+  useEffect(() => {
+    getIncidencias();
+  }, []);
+
+  const getIncidencias = () =>{
+    fetch('https://incidencias-fiisi.up.railway.app/api/incidencia')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setData(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }
+
   const [sidebarToggle] = useOutletContext();
+
+  const nombre = localStorage.getItem('nombre');
 
   return (
     <>
@@ -69,7 +90,7 @@ function Dashboard() {
         <DashboardHeader
           toggle={sidebarToggle}
           avatar={avatar}
-          user={{ name: "Freddy Moya" }}
+          user={{ name: nombre }}
         />
 
         {/* Estdisticas */}
@@ -87,8 +108,8 @@ function Dashboard() {
           </h1>
 
           <div className="flex flex-row gap-x-4 overflow-hidden overflow-x-auto justify-between no-scrollbar">
-            {dataOS?.map((data, index) => (
-              <ScrolledCard key={index} data={data} />
+            {data?.map((data, index) => (
+              <ScrolledCard key={data.idInci} data={data} />
             ))}
           </div>
 

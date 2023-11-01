@@ -37,7 +37,7 @@ function Sidebar({ ...props }) {
   };
 
   const logout = () => {
-    navigate("/auth/login");
+    navigate("/");
   };
 
   return (

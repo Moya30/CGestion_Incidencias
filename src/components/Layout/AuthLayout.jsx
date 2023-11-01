@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import { sidebarToggle } from "./../../utils/toggler.js";
 import BottomNavbar from "../BottomNavbar/Index";
+import Footer from "../Footer";
 
 function AuthLayout({ ...props }) {
   const isDesktop = () => document.body.clientWidth > 768;
@@ -18,18 +19,22 @@ function AuthLayout({ ...props }) {
   return (
     <div className="adminLayout">
       {/* Sidebar */}
+      
       <Sidebar
         toggle={sidebarToggle}
         className={sidebarStatus ? "" : "mobile"}
+        
       />
 
       {/* Main Wrapper */}
       <div className="mainWrapper">
         <Outlet context={[sidebarToggle]} />
+        {/* <Footer /> */}
       </div>
 
       {/* Bottom Navigation */}
       <BottomNavbar />
+      
     </div>
   );
 }
