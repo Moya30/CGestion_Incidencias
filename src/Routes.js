@@ -7,11 +7,11 @@ import Login from "./pages/auth/Login";
 import NotFound from "./pages/NotFound";
 import Form from "./pages/Form";
 import RegisterIndex from "./pages/auth/Register";
-import User from "./pages/User";
-import { DetailsUser } from "./pages/DetailsUser";
+import { DetailsUser } from "./pages/Usuario/DetailsUser";
 import Incidencias  from "./pages/indicencias/Incidencias";
 import Visualizar from "../src/pages/indicencias/pages/Visualizar"
 import Solucion from "./pages/indicencias/pages/Solucion";
+import User from "./pages/Usuario/User";
 
 function AppRouter() {
     return (
@@ -26,13 +26,13 @@ function AppRouter() {
                 <Route path="/incidencias" element={<Incidencias />}></Route>
                 <Route path="/incidencias/visualizar" element={<Visualizar />}></Route>
                 <Route path="/incidencias/solucion" element={<Solucion />}></Route>
-                <Route path="/User" element={<User />}></Route>
-                <Route path="/DetailsUser" element={<DetailsUser />}></Route>
+                <Route path="/Usuario/User" element={<User />}></Route>
+                <Route path="/Usuario/DetailsUser" element={<DetailsUser />}></Route>
                 <Route path="/404" element={<NotFound />}></Route>
                 <Route path="/form" element={<Form />}></Route>
             </Route>
         </Routes>
-        
+
         //   <Route path="/auth" element={<GuestLayout />}>
         //     <Route path="/auth/login" element={<Login />}></Route>
         //     <Route path="/auth/register" element={<RegisterIndex />}></Route>

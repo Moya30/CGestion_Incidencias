@@ -18,7 +18,7 @@ const initMenu = [
   },
   {
     label: "Usuario",
-    path: "/User",
+    path: "/Usuario/User",
     icon: faPage4,
   },
   {
