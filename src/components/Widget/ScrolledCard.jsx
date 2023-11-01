@@ -3,9 +3,9 @@ import React from "react";
 function ScrolledCard({ data, ...props }) {
   return (
     <div className={`scrolledCard ${data.color} text-slate-50 flex flex-col`}>
-      <h1 className="pb-3 font-semibold">{data.title}</h1>
+      <h1 className="pb-3 font-semibold">{data.nombTipoSegui}</h1>
       <div className="text-[0.6rem] text-slate-700 font-semibold">
-        {data.date} (YtD)
+        {data.nombTipoSegui} (YtD)
       </div>
       <div className="text-medium">OS:{data.os} M</div>
       <div className="flex flex-row justify-between items-center gap-3">
