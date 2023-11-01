@@ -47,7 +47,7 @@ const initMenu = [
   },
   {
     label: "Reporte de incidencias",
-    path: "/auth/login",
+    path: "/",
     icon: faLock,
   },
 

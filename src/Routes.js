@@ -16,7 +16,7 @@ import User from "./pages/Usuario/User";
 function AppRouter() {
     return (
         <Routes>
-            <Route path="/auth/login" element={<Login />}></Route>
+            <Route path="/" element={<Login />}></Route>
             <Route path="/auth" element={<GuestLayout />}>
                 <Route path="/auth/register" element={<RegisterIndex />}></Route>
             </Route>
