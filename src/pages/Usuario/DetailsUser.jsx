@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import Navbar from "../../components/Navbar/Index";
 import { sidebarToggle } from '../../utils/toggler';
 import AddUser from '../../libs/Usuario/AddUser'
 import { useNavigate } from "react-router-dom";
 import { show_alerta } from '../../components/Alerta/Alertas';
+
 export const DetailsUser = () => {
 
 
@@ -19,7 +21,19 @@ export const DetailsUser = () => {
 
   const navigate = useNavigate();
 
-
+  // combo
+  const [options, setOptions] = useState([]);
+ 
+  useEffect(() => {
+    axios.get('https://incidencias-fiisi.up.railway.app/api/rol')
+      .then((response) => {
+     
+        setOptions(response.data);
+      })
+      .catch((error) => {
+        console.error('Error al obtener los datos de la API', error);
+      });
+  }, []);
 
   const handleSumitChange = async (e) => {
     e.preventDefault();
@@ -82,18 +96,18 @@ export const DetailsUser = () => {
                 </div>
               </div>
               <div className='mt-4'>
-                  <label className="text-sm text-gray-600">
-                    Nombres
-                  </label>
-                  <input
-                    id="nombres"
-                    type="text"
-                    name="nombres"
-                    onChange={(e) => setNombPers(e.target.value)}
-                    className="text-sm placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
-                    placeholder="Apellido Paterno"
-                  />
-                </div>
+                <label className="text-sm text-gray-600">
+                  Nombres
+                </label>
+                <input
+                  id="nombres"
+                  type="text"
+                  name="nombres"
+                  onChange={(e) => setNombPers(e.target.value)}
+                  className="text-sm placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
+                  placeholder="Apellido Paterno"
+                />
+              </div>
               <div className='grid grid-cols-2 gap-4 mt-4'>
                 <div>
                   <label className="text-sm text-gray-600">
@@ -166,7 +180,7 @@ export const DetailsUser = () => {
                 </div>
 
                 <div>
-                  <label  className="block text-sm font-medium leading-6">
+                  <label className="block text-sm font-medium leading-6">
                     Rol
                   </label>
                   <div className="mt-2">
@@ -175,9 +189,15 @@ export const DetailsUser = () => {
                       name="country"
                       autoComplete="country-name"
                       className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:max-w-xs sm:text-sm sm:leading-6"
+                      value={nombRol}
+                      onChange={(e) => setNombRol(e.target.value)}
                     >
-                      <option>Administrador</option>
-                      <option>Usuario</option>
+                      <option value="">Seleecciona un rol</option>
+                      {options.map((option) => (
+                        <option key={option.id} value={option.value}>
+                          {option.nombRol}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -198,9 +218,9 @@ export const DetailsUser = () => {
               </div> */}
 
               <div className="mt-5 flex flex-row gap-4">
-                <button 
-                className="bg-emerald-600 text-gray-100 px-3 py-2 rounded-lg shadow-lg text-sm"
-                
+                <button
+                  className="bg-emerald-600 text-gray-100 px-3 py-2 rounded-lg shadow-lg text-sm"
+
                 >
                   Guardar
                 </button>

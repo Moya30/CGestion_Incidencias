@@ -8,12 +8,17 @@ import { useNavigate } from "react-router-dom";
 import { show_alerta } from "../../components/Alerta/Alertas";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import axios from "axios";
 
 function User() {
 
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    getUsuario();
+  }, []);
+
+  const getUsuario = () =>{
     fetch('http://incidencias-fiisi.up.railway.app/api/usuario')
       .then((response) => response.json())
       .then((data) => {
@@ -23,7 +28,7 @@ function User() {
       .catch((err) => {
         console.log(err.message);
       });
-  }, []);
+  }
 
   const navigate = useNavigate();
   const [sidebarToggle] = useOutletContext();
@@ -58,15 +63,25 @@ function User() {
     const MySwal = withReactContent(Swal);
     MySwal.fire({
       title: ' Estas seguro que eliminar al usuario ' + title + '?',
-      icon: 'question', text: 'confirma para eliminar la nota',
+      icon: 'question', text: 'confirma para eliminar al usuario',
       showCancelButton: true, confirmButtonText: 'si, eliminar', cancelButoonText: 'cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        //seTid(id);
-        console.log("id de eliminar", id)
-        const urls = `/api/delete/${id}`
-        //ennviarSolicitud('DELETE', urls);
-        //getList();
+  
+        axios.delete(`https://incidencias-fiisi.up.railway.app/api/usuario/${id}`)
+          .then((response) => {
+            var tipo = response.status ? "success" : "error";
+            console.log("tipo", tipo);
+            var msj = response.data;
+            show_alerta(msj, tipo)
+            if(tipo === 'success'){
+              getUsuario();
+            }
+          })
+          .catch((error) => {
+            console.error('Error al obtener los datos de la API', error);
+          });
+
 
       } else {
         show_alerta('No fue eliminado', 'info')

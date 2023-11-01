@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Datatables from "../../components/Datatables/Table";
 import TableCell from "../../components/Datatables/TableCell";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faPencil, faRemove, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function UserTable({ loading, dataHeader, data, handleDelete }) {
   return (
@@ -30,19 +30,6 @@ function UserTable({ loading, dataHeader, data, handleDelete }) {
           <TableCell dataLabel="Email" showLabel={true}>
             <p className="font-normal text-sm text-gray-500">{row.persona.emailPers}</p>
           </TableCell>
-
-          {/* <TableCell dataLabel="Estado" showLabel={true}>
-            <span className=" space-x-1">
-              {row.roles?.map((role, index) => (
-                <span
-                  key={index}
-                  className="rounded-full py-1 px-3 text-xs font-semibold bg-emerald-200 text-green-900"
-                >
-                  {role.name}
-                </span>
-              ))}
-            </span>
-          </TableCell> */}
           <TableCell>
             <Link
               to={`/auth/master/user/${row.id}/edit`}
@@ -59,7 +46,7 @@ function UserTable({ loading, dataHeader, data, handleDelete }) {
             <Link
               onClick={(e) => {
                 e.preventDefault();
-                handleDelete(row.id);
+                handleDelete(row.idUsua,row.nombUsua);
               }}
               to={`/auth/master/user/${row.id}/edit`}
               className={`text-gray-500 inline-flex py-2 px-2 rounded  text-sm`}
