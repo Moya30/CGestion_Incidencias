@@ -10,7 +10,7 @@ import {
 const initMenu = [
   {
     label: "Dashboard",
-    path: "/",
+    path: "/dashboard",
     icon: faTachometer,
   },
   {

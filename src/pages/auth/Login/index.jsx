@@ -132,6 +132,8 @@ function LoginIndex() {
                       disabled={loading}
                       type="submit"
                       className="flex items-center justify-center focus:outline-none text-white text-sm bg-emerald-500 hover:bg-emerald-700 rounded-lg md:rounded md:py-2 py-3 w-full transition duration-150 ease-in"
+                      onClick={() =>
+                        navigate("/Dashboard")}
                     >
                       <span className="mr-2 md:uppercase">
                         {loading ? "Processing...." : "Login"}

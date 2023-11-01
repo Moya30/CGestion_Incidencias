@@ -6,7 +6,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 function SidebarLogo({ icon, text, ...props }) {
   return (
     <div className="relative flex flex-row font-semibold text-3xl md:items-center md:mx-auto text-blue-950 mb-5 p-4 justify-between">
-      <Link to="/">
+      <Link to="/dashboard">
         <FontAwesomeIcon icon={icon}></FontAwesomeIcon> {text}
       </Link>
       <button
