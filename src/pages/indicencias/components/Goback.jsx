@@ -9,11 +9,11 @@ function Goback() {
       to={"/incidencias"}
       className={`text-cyan-900 inline-flex py-2 px-2 rounded  text-sm`}
     >
-      <div class="flex">
-        <div class="flex-none ...">
+      <div className="flex">
+        <div className="flex-none ...">
           <FontAwesomeIcon icon={faArrowLeft} />
         </div>
-        <div class="flex-0 w-16 text-center">
+        <div className="flex-0 w-16 text-center">
           Volver
         </div>
       </div>

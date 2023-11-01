@@ -31,6 +31,7 @@ function UserTableIncidencias({ loading, dataHeader, handleDelete }) {
         {user &&
           user.length > 0 &&
           user.map((row, index) => (
+            
             <tr key={row.idInci}>
               <TableCell dataLabel="Name" showLabel={true}>
                 <span className="font-medium text-sm text-gray-900">
@@ -65,14 +66,13 @@ function UserTableIncidencias({ loading, dataHeader, handleDelete }) {
 
               <TableCell>
                 <Link
-                  to={`/incidencias/visualizar/${row.idInci}`}
+                  to={`/incidencias/visualizar?incidenciaID=${row.idInci}`}
                   className={`text-gray-500 inline-flex py-2 px-2 rounded  text-sm`}
                 >
                   <FontAwesomeIcon icon={faEye} />
                 </Link>
-
                 <Link
-                  to={"/incidencias/solucion"}
+                  to={`/incidencias/solucion?incidenciaID=${row.idInci}`}
                   className={`text-gray-500 inline-flex py-2 px-2 rounded  text-sm`}
                 >
                   <FontAwesomeIcon icon={faLightbulb} />
@@ -87,6 +87,8 @@ function UserTableIncidencias({ loading, dataHeader, handleDelete }) {
                 </Link>
               </TableCell>
             </tr>
+
+            
           ))}
       </Datatables>
     </>
