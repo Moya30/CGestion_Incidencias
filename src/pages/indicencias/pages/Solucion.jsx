@@ -8,19 +8,16 @@ import axios from "axios";
 function Solucion() {
   const [sidebarToggle] = useOutletContext();
 
+  /*Solution */
   const [solution, setSolution] = useState(null);
-
   const query = new URLSearchParams(window.location.search);
-
   const incidenciaID = query.get("incidenciaID");
 
-  useEffect(() => {
-    const endPonit = `https://incidencias-fiisi.up.railway.app/api/incidencia/${incidenciaID}`;
-
-    console.log("Error", endPonit);
-
-    axios
-      .get(endPonit)
+  const fetchData = () => {
+    return axios
+      .get(
+        `https://incidencias-fiisi.up.railway.app/api/incidencia/${incidenciaID}`
+      )
       .then((response) => {
         const apiData = response.data;
 
@@ -29,9 +26,25 @@ function Solucion() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+  };
+  /*type follow*/
+  const [follow, setFollow] = useState(null);
+  const fetchFollow = () => {
+
+    return axios
+      .get(`https://incidencias-fiisi.up.railway.app/api/tiposeguimiento`)
+      .then((response) => {
+        setFollow(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching follow:", error);
+      });
+  };
+
+  useEffect(() => {
+    fetchData();
+    fetchFollow();
   }, []);
-
-
 
   return (
     <>
@@ -51,7 +64,7 @@ function Solucion() {
               <>
                 <form>
                   <div>
-                    <div class="grid gap-4 grid-cols-2">
+                    <div className="grid gap-4 grid-cols-2">
                       {/* incidencia */}
                       <div className="mt-6">
                         <label
@@ -65,7 +78,7 @@ function Solucion() {
                           type="text"
                           name="largeInput"
                           className="text-sm placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
-                          value={solution.idInci}
+                          value={solution.idInci} readOnly
                         />
                       </div>
 
@@ -81,9 +94,9 @@ function Solucion() {
                           id="largeInput"
                           type="text"
                           name="largeInput"
-                          // onChange={(e) => setEmail(e.target.value)}
+                          // onChange={(e) => setEmail(e.target.onChange)}
                           className="text-sm placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
-                          value={solution.nombInci}
+                          value={solution.nombInci} readOnly
                         />
                       </div>
 
@@ -99,13 +112,14 @@ function Solucion() {
                           id="largeInput"
                           type="text"
                           name="largeInput"
-                          // onChange={(e) => setEmail(e.target.value)}
+                          // onChange={(e) => setEmail(e.target.onChange)}
                           className="text-sm placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
                           value={solution.usuario.nombUsua}
                         />
                       </div>
 
                       {/* Tipo de seguimiento */}
+                      <div>
                       <div className="mt-6">
                         <label
                           htmlFor="largeInput"
@@ -113,18 +127,23 @@ function Solucion() {
                         >
                           Tipo de seguimiento:
                         </label>
-
-                        <div className="mt-0">
-                          <select
-                            id="country"
-                            name="country"
-                            autoComplete="country-name"
-                            className="text-sm placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
-                          >
-                            <option>Administrador</option>
-                            <option>Usuario</option>
-                          </select>
-                        </div>
+                        <select
+                          id="seguimiento"
+                          name="seguimiento"
+                          autoComplete="seguimiento-name"
+                          className="text-sm placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
+                          value={solution.tipoSeguimiento.nombTipoSegui}
+                          onChange={ (e) => setSolution(e.target.value)}
+                        >
+                          <option>Seleccione una opcion</option>
+                          
+                          {follow.map((follow) => (
+                            <option key={follow.idTipoSegui} value={follow.value}>
+                              {follow.nombTipoSegui}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                       </div>
                     </div>
                     {/* Solución al caso:  */}
@@ -139,7 +158,7 @@ function Solucion() {
                         id="message"
                         rows="4"
                         className="text-sm placeholder-gray-500 px-4 rounded-lg border border-gray-200 w-full md:py-2 py-3 focus:outline-none focus:border-emerald-400 mt-1"
-                        value={solution.descInci}
+                        onChange={solution.descInci}
                       ></textarea>
                     </div>
                   </div>

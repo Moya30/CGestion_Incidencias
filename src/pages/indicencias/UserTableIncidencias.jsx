@@ -7,9 +7,9 @@ import TableCell from "../../components/Datatables/TableCell";
 
 
 import axios from "axios";
-import { buttonAlert } from "./data/buttonAlert";
+import moment from "moment/moment";
 
-function UserTableIncidencias({ loading, dataHeader, handleDelete }) {
+function UserTableIncidencias({ loading, dataHeader,data, handleDelete }) {
   const [user, setUser] = useState([]);
 
   const fetchData = () => {
@@ -28,9 +28,9 @@ function UserTableIncidencias({ loading, dataHeader, handleDelete }) {
     <>
       {/* TABLA DE LOS DATOS */}
       <Datatables loading={loading} dataHeader={dataHeader}>
-        {user &&
-          user.length > 0 &&
-          user.map((row, index) => (
+        {data &&
+          data.length > 0 &&
+          data.map((row, index) => (
             
             <tr key={row.idInci}>
               <TableCell dataLabel="Name" showLabel={true}>
@@ -55,7 +55,7 @@ function UserTableIncidencias({ loading, dataHeader, handleDelete }) {
               </TableCell>
               <TableCell dataLabel="FECHA" showLabel={true}>
                 <p className="font-normal text-sm text-gray-500">
-                  {row.fechaInci}
+                  {moment(row.fechaInci).format('MMMM D, YYYY')}
                 </p>
               </TableCell>
               <TableCell dataLabel="USUARIO" showLabel={true}>
@@ -79,7 +79,10 @@ function UserTableIncidencias({ loading, dataHeader, handleDelete }) {
                 </Link>
 
                 <Link 
-                  onClick={buttonAlert}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleDelete(row.idInci,row.usuario.nombUsua);
+                  }}
                   to={"/incidencias"}
                   className={`text-gray-500 inline-flex py-2 px-2 rounded  text-sm`}
                 >
