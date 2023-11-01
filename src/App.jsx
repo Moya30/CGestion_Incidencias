@@ -1,41 +1,12 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-
-import Dashboard from "./pages/Dashboard";
-import Table from "./pages/Table";
-import AuthLayout from "./components/Layout/AuthLayout";
-import GuestLayout from "./components/Layout/GuestLayout";
-import Login from "./pages/auth/Login";
-import NotFound from "./pages/NotFound";
-import Form from "./pages/Form";
-import RegisterIndex from "./pages/auth/Register";
-import User  from "./pages/User";
-import { DetailsUser } from "./pages/DetailsUser";
-import Incidencias  from "./pages/indicencias/Incidencias";
-import Visualizar from "../src/pages/indicencias/pages/Visualizar"
-import Solucion from "./pages/indicencias/pages/Solucion";
-
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./Routes";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<AuthLayout />}>
-        <Route path="/" element={<Dashboard />}></Route>
-        <Route path="/table" element={<Table />}></Route>
-        <Route path="/incidencias" element={<Incidencias/>}></Route>
-        <Route path="/incidencias/visualizar" element={<Visualizar/>}></Route>
-        <Route path="/incidencias/solucion" element={<Solucion/>}></Route>
-        <Route path="/User" element={<User />}></Route>
-        <Route path="/DetailsUser" element={<DetailsUser />}></Route>
-        <Route path="/404" element={<NotFound />}></Route>
-        <Route path="/form" element={<Form />}></Route>
-        <Route path="/profile" element={<User />}></Route>
-      </Route>
-      <Route path="/auth" element={<GuestLayout />}>
-        <Route path="/auth/login" element={<Login />}></Route>
-        <Route path="/auth/register" element={<RegisterIndex />}></Route>
-      </Route>
-    </Routes>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   );
 }
 
