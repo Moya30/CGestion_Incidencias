@@ -19,7 +19,7 @@ function User() {
   }, []);
 
   const getUsuario = () =>{
-    fetch('http://incidencias-fiisi.up.railway.app/api/usuario')
+    fetch('https://incidencias-fiisi.up.railway.app/api/usuario')
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
