@@ -54,6 +54,7 @@ function UserTable({ loading, dataHeader, data, handleDelete }) {
               <FontAwesomeIcon icon={faTrash} />
             </Link>
           </TableCell>
+          
         </tr>
       ))}
     </Datatables>
