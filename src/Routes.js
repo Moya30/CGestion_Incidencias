@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
-import Table from "./pages/Table";
 import AuthLayout from "./components/Layout/AuthLayout";
 import GuestLayout from "./components/Layout/GuestLayout";
 import Login from "./pages/auth/Login";
@@ -40,7 +39,6 @@ function AppRouter() {
             </Route>
             <Route path="/" element={<AuthLayout />}>
                 <Route path="/dashboard" element={<Dashboard />}></Route>
-                <Route path="/table" element={<Table />}></Route>
                 <Route path="/incidencias" element={<Incidencias />}></Route>
                 <Route path="/incidencias/visualizar" element={<Visualizar />}></Route>
                 <Route path="/incidencias/solucion" element={<Solucion />}></Route>

@@ -21,12 +21,7 @@ const initMenu = [
     path: "/Usuario/User",
     icon: faPage4,
   },
-  {
-    label: "404",
-    path: "/404",
-    icon: faNotdef,
-  },
-  
+ 
   
   {
     label: 'Procesos'
@@ -35,11 +30,6 @@ const initMenu = [
     label: "Incidencias",
     path: "/incidencias",
     icon: faWindows,
-  },
-  {
-    label: "Seguimiento",
-    path: "/table",
-    icon: faTable,
   },
 
   {
